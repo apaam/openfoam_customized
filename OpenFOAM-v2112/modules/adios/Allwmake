@@ -1,0 +1,24 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+targetType=libso
+. ${WM_PROJECT_DIR:?}/wmake/scripts/AllwmakeParseArguments
+# -----------------------------------------------------------------------------
+echo "========================================"
+date "+%Y-%m-%d %H:%M:%S %z" 2>/dev/null || echo "date is unknown"
+echo "Starting compile of adiosFoam with ${WM_PROJECT_DIR##*/} ${0##*}"
+echo "  $WM_COMPILER $WM_COMPILER_TYPE compiler"
+echo "  ${WM_OPTIONS}, with ${WM_MPLIB} ${FOAM_MPI}"
+echo "  prefix = ${FOAM_MODULE_PREFIX:-default (user)}"
+echo
+
+src/Allwmake $targetType $*
+
+# Some summary information
+echo
+date "+%Y-%m-%d %H:%M:%S %z" 2>/dev/null || echo "date is unknown"
+echo "========================================"
+echo "  Finished compile of adiosFoam with ${WM_PROJECT_DIR##*/}"
+echo "  $WM_COMPILER $WM_COMPILER_TYPE compiler"
+echo "  ${WM_OPTIONS}, with ${WM_MPLIB} ${FOAM_MPI}"
+echo
+#------------------------------------------------------------------------------
