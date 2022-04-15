@@ -5,7 +5,10 @@ test:
 	bash test.sh
 
 clean:
-	rm -rvf build
+	rm -rvf OpenFOAM-build/build
+
+realclean:
+	rm -rvf OpenFOAM-build
 
 .PHONY: default test clean
 

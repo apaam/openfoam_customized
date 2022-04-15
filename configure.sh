@@ -34,5 +34,5 @@ echo "setenv CPATH \"$CPATH\"" >> etc/prefs.csh
 echo "export LIBRARY_PATH=\"$LIBRARY_PATH\"" >> etc/prefs.sh
 echo "setenv LIBRARY_PATH \"$LIBRARY_PATH\"" >> etc/prefs.csh
 
-# echo 'export FOAM_DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH"' >> etc/bashrc
-# echo 'setenv FOAM_DYLD_LIBRARY_PATH "$DYLD_LIBRARY_PATH"' >> etc/cshrc
+echo 'export FOAM_DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH"' >> etc/bashrc
+echo 'setenv FOAM_DYLD_LIBRARY_PATH "$DYLD_LIBRARY_PATH"' >> etc/cshrc
