@@ -10,7 +10,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $(NUM_CORES) -s -q -k; ./Allwmake -j $(NUM_CORES) -s
+	./Allwmake -j $(NUM_CORES) -s -q -k
+	./Allwmake -j $(NUM_CORES) -s
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	rsync -urva OpenFOAM-v2112/* OpenFOAM-build
 	rsync -u Brewfile OpenFOAM-build/Brewfile
@@ -19,12 +20,13 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	brew bundle -f
 	brew bundle check --verbose --no-upgrade
-	cat Brewfile.lock.json	
-  bash -ex configure.sh
-	
+	cat Brewfile.lock.json
+	bash -ex configure.sh
+
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $(NUM_CORES) -s -q -k; ./Allwmake -j $(NUM_CORES) -s
+	./Allwmake -j $(NUM_CORES) -s -q -k
+	./Allwmake -j $(NUM_CORES) -s
 else
-  echo "$OSTYPE not support"
+	echo "$OSTYPE not support"
 fi
