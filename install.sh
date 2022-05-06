@@ -5,13 +5,13 @@ NUM_CORES=${NUM_CORES:-2}
 mkdir -p OpenFOAM-build
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	cp -urf OpenFOAM-v2112/* OpenFOAM-build
+	rsync -ura OpenFOAM-v2112/* OpenFOAM-build
 	cd OpenFOAM-build
 
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $(NUM_CORES) -s -q -k
-	./Allwmake -j $(NUM_CORES) -s
+	./Allwmake -j $NUM_CORES -s -q -k
+	./Allwmake -j $NUM_CORES -s
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	rsync -ura OpenFOAM-v2112/* OpenFOAM-build
 	rsync -u Brewfile OpenFOAM-build/Brewfile
@@ -25,8 +25,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $(NUM_CORES) -s -q -k
-	./Allwmake -j $(NUM_CORES) -s
+	./Allwmake -j $NUM_CORES -s -q -k
+	./Allwmake -j $NUM_CORES -s
 else
 	echo "$OSTYPE not support"
 fi
