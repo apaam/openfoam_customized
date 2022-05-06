@@ -5,7 +5,7 @@ NUM_CORES=${NUM_CORES:-2}
 mkdir -p OpenFOAM-build
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	cp -urvf OpenFOAM-v2112/* OpenFOAM-build
+	cp -urf OpenFOAM-v2112/* OpenFOAM-build
 	cd OpenFOAM-build
 
 	source etc/bashrc
