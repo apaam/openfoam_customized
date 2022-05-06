@@ -13,7 +13,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	./Allwmake -j $(NUM_CORES) -s -q -k
 	./Allwmake -j $(NUM_CORES) -s
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	rsync -urva OpenFOAM-v2112/* OpenFOAM-build
+	rsync -ura OpenFOAM-v2112/* OpenFOAM-build
 	rsync -u Brewfile OpenFOAM-build/Brewfile
 	rsync -u configure.sh OpenFOAM-build/configure.sh
 	cd OpenFOAM-build
