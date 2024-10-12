@@ -3,10 +3,10 @@ JOB_FLAG := $(filter -j%, $(subst -j ,-j,$(shell ps T | grep "^\s*$(MAKE_PID).*$
 JOBS     := $(subst -j,,$(JOB_FLAG))
 
 default: get_jobs
-	NUM_JOBS=$(JOBS) bash install.sh
+	bash install.sh
 
 test: get_jobs
-	NUM_JOBS=$(JOBS) bash test.sh
+	bash test.sh
 
 get_jobs:
 	@if [ -n "$(JOBS)" ]; then \
@@ -18,6 +18,7 @@ get_jobs:
 	else \
 		echo "No parallel jobs specified (using default jobserver mode)."; \
 	fi
+  NUM_JOBS=$(JOBS) 
 
 clean:
 	rm -rf OpenFOAM-build/build
