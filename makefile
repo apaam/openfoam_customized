@@ -18,7 +18,7 @@ get_jobs:
 	else \
 		echo "No parallel jobs specified (using default jobserver mode)."; \
 	fi
-  NUM_JOBS=$(JOBS) 
+  export NUM_JOBS=$(JOBS) 
 
 clean:
 	rm -rf OpenFOAM-build/build
