@@ -1,6 +1,7 @@
 #!/bin/bash
 
-NUM_CORES=${NUM_CORES:-2}
+NUM_JOBS=${NUM_JOBS:-2}
+echo "NUM_JOBS: $NUM_JOBS"
 
 mkdir -p OpenFOAM-build
 
@@ -10,8 +11,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $NUM_CORES -s -q -k
-	./Allwmake -j $NUM_CORES -s
+	./Allwmake -j $NUM_JOBS -s -q -k
+	./Allwmake -j $NUM_JOBS -s
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	rsync -ura OpenFOAM-v2112/* OpenFOAM-build
 	rsync -u Brewfile OpenFOAM-build/Brewfile
@@ -25,8 +26,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	source etc/bashrc
 	foamSystemCheck
-	./Allwmake -j $NUM_CORES -s -q -k
-	./Allwmake -j $NUM_CORES -s
+	./Allwmake -j $NUM_JOBS -s -q -k
+	./Allwmake -j $NUM_JOBS -s
 else
 	echo "$OSTYPE not support"
 fi
